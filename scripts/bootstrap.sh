@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -x
+exec > ~/bootstrap.log 2>&1
+
+mkdir .ssh
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCx9DksU4egawOMT6UM0QalsM+Inh1lt+fndKusDc55flO0hOxLK1daasff3jPFwHE7MlJa5vlBKuObq/ugo8Wa465IImB/+m+sKrbXTZGycxzewkHcxvFAfXZviFsriemLCJej4xNw2pCGkxwl7L9KgGTdwGtHWSVyuM0hnihDl6iydnCj2H7qG/9LhMUEEbrNSksO2rEviHrjHizFlBeZ048FoQNBKcuJZN1xin/koKhFuDAF/4TCdfLqFUS2Bo88CXle6ApyxEhpiYqcyEUULGbGrRidJuybG4QYpbx5cqj/7Ffp9QkS4zZLNIJB/gAZZL+CYzB/lZzPL3/IlV662fEJT0ywbZWCxXoBvIypD0bHNkX0XGtuCSZy/3bMzuVCj87gPIor6HiUswjkjDeUtHv8K6VdkDzVekdS8PNLdr4xejxhg669P7s99qJUsTqFJPedc9i+xGgTm5dZmJUrUH/A7DBJhYXod4n5vduADOSbfHqQP+bfLEZQ8ny9wsYhtrmaj9OONjhfzCz2/Iv4g0djTLA11Q4wntWZO5Ctb/eVDLqsYcocdNuXwsclSAp5PTjuPNojvxcUqR7zcLlNa0dNFHybkvvCQlv+YHv0sXD+2+SxinCPafO2sFKLjxrvZ+x3zZ5T5lga/J6ybZuA2d14rk3UGGc0/u7C/GcClw== jasonahubbard@gmail.com" >> .ssh/authorized_keys
+chmod 700 .ssh
+chmod 640 .ssh/authorized_keys
