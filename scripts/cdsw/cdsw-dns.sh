@@ -11,8 +11,6 @@ host=$(hostname -s)
 ip=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
 dnsserver=$(cat /etc/resolv.conf | grep -i nameserver | head -n1 | cut -d ' ' -f2)
 
-sed -i "/DOMAIN=/cDOMAIN=\"cdsw.cloudera.internal\"" /etc/cdsw/config/cdsw.conf
-
 echo "include \"/etc/named/named.conf.local\";" >> /etc/named.conf
 sed "/options {/a \\\tforwarders { ${dnsserver}; };" -i /etc/named.conf
 sed "/listen-on port 53/c \\\tlisten-on port 53 { any; };" -i /etc/named.conf
@@ -44,5 +42,8 @@ EOF
 
 systemctl enable named
 systemctl restart named
+
+ip=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+sed -i "/nameserver/c nameserver ${ip}" /etc/resolv.conf
 
 echo "Finished cdsw dns"
